@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.enumType.ColourPalette;
-import com.example.demo.domain.enumType.DriveType;
-import com.example.demo.domain.enumType.ModelType;
+import com.example.demo.domain.enum_type.ColourPalette;
+import com.example.demo.domain.enum_type.DriveType;
+import com.example.demo.domain.enum_type.ModelType;
 import com.example.demo.domain.model.Prototype;
 import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

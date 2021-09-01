@@ -1,14 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.enumType.ColourPalette;
-import com.example.demo.domain.enumType.DriveType;
-import com.example.demo.domain.enumType.GearBoxType;
-import com.example.demo.domain.enumType.ModelType;
+import com.example.demo.domain.enum_type.ColourPalette;
+import com.example.demo.domain.enum_type.DriveType;
+import com.example.demo.domain.enum_type.GearBoxType;
+import com.example.demo.domain.enum_type.ModelType;
 import com.example.demo.domain.model.Prototype;
 import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
 import com.example.demo.service.PrototypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

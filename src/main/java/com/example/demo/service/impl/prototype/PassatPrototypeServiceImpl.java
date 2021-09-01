@@ -1,9 +1,9 @@
 package com.example.demo.service.impl.prototype;
 
 
-import com.example.demo.domain.enumType.ColourPalette;
-import com.example.demo.domain.enumType.DriveType;
-import com.example.demo.domain.enumType.ModelType;
+import com.example.demo.domain.enum_type.ColourPalette;
+import com.example.demo.domain.enum_type.DriveType;
+import com.example.demo.domain.enum_type.ModelType;
 import com.example.demo.domain.model.OptionList;
 import com.example.demo.domain.model.Prototype;
 import com.example.demo.domain.model.engine.Engine;
