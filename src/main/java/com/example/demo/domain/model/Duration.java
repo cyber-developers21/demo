@@ -1,27 +1,27 @@
 package com.example.demo.domain.model;
 
 public class Duration{
-    private String itemName;
-    private double itemValue;
+    private String name;
+    private double value;
 
-    public Duration(String itemName, double itemValue) {
-        this.itemName = itemName;
-        this.itemValue = itemValue;
+    public Duration(String name, double value) {
+        this.name = name;
+        this.value = value;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getName() {
+        return name;
     }
 
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getItemValue() {
-        return itemValue;
+    public double getValue() {
+        return value;
     }
 
-    public void setItemValue(double itemValue) {
-        this.itemValue = itemValue;
+    public void setValue(double value) {
+        this.value = value;
     }
 }

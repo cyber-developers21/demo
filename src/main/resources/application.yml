@@ -1,0 +1,16 @@
+server:
+  port: 8090
+
+swagger:
+  api-key:
+  app-info:
+    name: demo
+    description: Test project.
+    version: V1
+    term-of-service-url: /
+    license: License
+    license-url: /
+    contact:
+      name: Yasin Talha AKMAN / Ismail YILDIRIM
+      url: https://github.com/cyber-developers21/demo
+      email: cyber.developers21@gmail.com

@@ -1,30 +1,39 @@
 package com.example.demo.domain.model;
 
-import com.example.demo.domain.enumType.ColourPalette;
-import com.example.demo.domain.enumType.ModelType;
+import com.example.demo.domain.enum_type.ColourPalette;
+import com.example.demo.domain.enum_type.DriveType;
+import com.example.demo.domain.enum_type.ModelType;
 import com.example.demo.domain.model.engine.Engine;
+import com.example.demo.domain.model.engine.GearBox;
 
-import java.util.UUID;
+import java.math.BigDecimal;
 
-public abstract class Vehicle{
-    private UUID vehicleId;
+public abstract class Vehicle {
     private double length;
-    private double weight;
+    private double width;
+    private double height;
     private ColourPalette colourPalette;
     private ModelType modelType;
-    private Engine engine;
+    private DriveType driveType;
     private OptionList optionList;
+    private Engine engine;
+    private GearBox gearBox;
+    private double totalDuration;
+    private BigDecimal price;
 
-    public Vehicle(){
-
+    protected Vehicle() {
     }
 
-    public Vehicle(double length, double weight, ColourPalette colourPalette, ModelType modelType, Engine engine) {
+    protected Vehicle(double length, double width, double height, ColourPalette colourPalette, ModelType modelType,
+                      DriveType driveType, Engine engine, GearBox gearBox) {
         this.length = length;
-        this.weight = weight;
+        this.width = width;
+        this.height = height;
         this.colourPalette = colourPalette;
         this.modelType = modelType;
+        this.driveType = driveType;
         this.engine = engine;
+        this.gearBox = gearBox;
     }
 
     public double getLength() {
@@ -35,36 +44,20 @@ public abstract class Vehicle{
         this.length = length;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getWidth() {
+        return width;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setWidth(double width) {
+        this.width = width;
     }
 
-    public UUID getVehicleId() {
-        return vehicleId;
+    public double getHeight() {
+        return height;
     }
 
-    public void setVehicleId(UUID vehicleId) {
-        this.vehicleId = vehicleId;
-    }
-
-    public ModelType getModelType() {
-        return modelType;
-    }
-
-    public void setModelType(ModelType modelType) {
-        this.modelType = modelType;
-    }
-
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public void setEngine(Engine engine) {
-        this.engine = engine;
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     public ColourPalette getColourPalette() {
@@ -75,11 +68,59 @@ public abstract class Vehicle{
         this.colourPalette = colourPalette;
     }
 
+    public ModelType getModelType() {
+        return modelType;
+    }
+
+    public void setModelType(ModelType modelType) {
+        this.modelType = modelType;
+    }
+
+    public DriveType getDriveType() {
+        return driveType;
+    }
+
+    public void setDriveType(DriveType driveType) {
+        this.driveType = driveType;
+    }
+
     public OptionList getOptionList() {
         return optionList;
     }
 
     public void setOptionList(OptionList optionList) {
         this.optionList = optionList;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public GearBox getGearBox() {
+        return gearBox;
+    }
+
+    public void setGearBox(GearBox gearBox) {
+        this.gearBox = gearBox;
+    }
+
+    public double getTotalDuration() {
+        return totalDuration;
+    }
+
+    public void setTotalDuration(double totalDuration) {
+        this.totalDuration = totalDuration;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

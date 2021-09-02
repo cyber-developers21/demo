@@ -2,11 +2,11 @@ package com.example.demo.domain.model;
 
 public class Prototype {
     private double length;
-    private double weight;
+    private double width;
+    private double height;
     private OptionList optionList;
 
     public Prototype(){
-
     }
 
     public double getLength() {
@@ -17,12 +17,20 @@ public class Prototype {
         this.length = length;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getWidth() {
+        return width;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     public OptionList getOptionList() {
