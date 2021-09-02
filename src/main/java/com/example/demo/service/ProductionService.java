@@ -7,10 +7,7 @@ import com.example.demo.domain.model.Vehicle;
 import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
 
-import java.math.BigDecimal;
-import java.util.UUID;
-
 public interface ProductionService {
-    Vehicle releaseNewCar(UUID vehicleId, double length, double weight, ColourPalette colourPalette,
-                          ModelType modelType, DriveType driveType, Engine engine, GearBox gearBox);
+    Vehicle releaseNewCar(ColourPalette colourPalette, ModelType modelType, DriveType driveType,
+                          Engine engine, GearBox gearBox);
 }

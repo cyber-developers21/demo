@@ -7,12 +7,11 @@ import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 public abstract class Vehicle {
-    private UUID vehicleId;
     private double length;
-    private double weight;
+    private double width;
+    private double height;
     private ColourPalette colourPalette;
     private ModelType modelType;
     private DriveType driveType;
@@ -25,24 +24,16 @@ public abstract class Vehicle {
     protected Vehicle() {
     }
 
-    protected Vehicle(UUID vehicleId, double length, double weight, ColourPalette colourPalette, ModelType modelType,
+    protected Vehicle(double length, double width, double height, ColourPalette colourPalette, ModelType modelType,
                       DriveType driveType, Engine engine, GearBox gearBox) {
-        this.vehicleId = vehicleId;
         this.length = length;
-        this.weight = weight;
+        this.width = width;
+        this.height = height;
         this.colourPalette = colourPalette;
         this.modelType = modelType;
         this.driveType = driveType;
         this.engine = engine;
         this.gearBox = gearBox;
-    }
-
-    public UUID getVehicleId() {
-        return vehicleId;
-    }
-
-    public void setVehicleId(UUID vehicleId) {
-        this.vehicleId = vehicleId;
     }
 
     public double getLength() {
@@ -53,12 +44,20 @@ public abstract class Vehicle {
         this.length = length;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getWidth() {
+        return width;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     public ColourPalette getColourPalette() {

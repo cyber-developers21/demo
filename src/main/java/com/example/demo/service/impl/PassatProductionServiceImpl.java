@@ -10,25 +10,31 @@ import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
 import com.example.demo.service.ProductionService;
 import com.example.demo.util.PriceConstants;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
+import static com.example.demo.util.VehicleSizeConstants.PASSAT_FIX_HEIGHT;
+import static com.example.demo.util.VehicleSizeConstants.PASSAT_FIX_LENGTH;
+import static com.example.demo.util.VehicleSizeConstants.PASSAT_FIX_WIDTH;
+
+@Service
 public class PassatProductionServiceImpl implements ProductionService {
     @Override
-    public Vehicle releaseNewCar(UUID vehicleId, double length, double weight, ColourPalette colourPalette,
-                                 ModelType modelType, DriveType driveType, Engine engine, GearBox gearBox) {
+    public Vehicle releaseNewCar(ColourPalette colourPalette, ModelType modelType, DriveType driveType,
+                                 Engine engine, GearBox gearBox) {
 
-        Vehicle passat = new Passat(vehicleId, length, weight, colourPalette, modelType, driveType, engine, gearBox);
+        Vehicle passat = new Passat(PASSAT_FIX_LENGTH, PASSAT_FIX_WIDTH, PASSAT_FIX_HEIGHT, colourPalette, modelType,
+                driveType, engine, gearBox);
 
         /**
          private UUID vehicleId;
          private double length;
-         private double weight;
+         private double width;
+         private double height;
          private ColourPalette colourPalette;
          private ModelType modelType;
          private DriveType driveType;
@@ -43,7 +49,6 @@ public class PassatProductionServiceImpl implements ProductionService {
                  private Integer tork;
                  private Integer horsePower;
                  private Integer volume;
-
                  private EngineType engineType;
 
          private OptionList optionList;
@@ -66,7 +71,7 @@ public class PassatProductionServiceImpl implements ProductionService {
         passat.setTotalDuration(totalDuration);
 
         List<BigDecimal> priceList = Arrays.asList(colourPalette.getPrice(), modelType.getPrice(), driveType.getPrice(),
-                engine.getPrice(), gearBox.getPrice());
+                engine.getEngineType().getPrice(), gearBox.getGearBoxType().getPrice());
 
         BigDecimal totalPrice = PriceConstants.basePassatPrice
                 .add(calculatePrice(priceList))

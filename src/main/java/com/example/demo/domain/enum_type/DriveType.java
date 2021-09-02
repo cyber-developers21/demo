@@ -3,9 +3,9 @@ package com.example.demo.domain.enum_type;
 import java.math.BigDecimal;
 
 public enum DriveType {
-    AUTONOM(0, 12, BigDecimal.valueOf(321.4)),
+    SELF_DRIVE(0, 132, BigDecimal.valueOf(314.2)),
     HALF_AUTONOM(1, 64, BigDecimal.valueOf(412.6)),
-    SELF_DRIVE(2, 132, BigDecimal.valueOf(514.2));
+    AUTONOM(2, 12, BigDecimal.valueOf(521.4));
 
     private int value;
     private double duration;

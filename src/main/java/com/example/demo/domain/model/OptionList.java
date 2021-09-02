@@ -1,6 +1,7 @@
 package com.example.demo.domain.model;
 
 import com.example.demo.domain.model.engine.Engine;
+import com.example.demo.domain.model.engine.GearBox;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,7 @@ public class OptionList {
     private Map<Integer, String> colourMap;
     private Map<Integer, String> modelMap;
     private Map<Integer, String> driveMap;
-    private Map<Integer, String> gearBoxMap;
+    private List<GearBox> gearBoxMap;
     private List<Engine> engineList;
 
     public Map<Integer, String> getColourMap() {
@@ -36,11 +37,11 @@ public class OptionList {
         this.driveMap = driveMap;
     }
 
-    public Map<Integer, String> getGearBoxMap() {
+    public List<GearBox> getGearBoxMap() {
         return gearBoxMap;
     }
 
-    public void setGearBoxMap(Map<Integer, String> gearBoxMap) {
+    public void setGearBoxMap(List<GearBox> gearBoxMap) {
         this.gearBoxMap = gearBoxMap;
     }
 

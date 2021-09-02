@@ -16,8 +16,8 @@ public class Passat extends Vehicle {
     public Passat(){
 
     }
-    public Passat(UUID vehicleId, double length, double weight, ColourPalette colourPalette, ModelType modelType, DriveType driveType,
-                  Engine engine, GearBox gearBox) {
-        super(vehicleId, length, weight, colourPalette, modelType, driveType, engine, gearBox);
+    public Passat(double length, double Width, double height, ColourPalette colourPalette, ModelType modelType,
+                  DriveType driveType, Engine engine, GearBox gearBox) {
+        super(length, Width, height, colourPalette, modelType, driveType, engine, gearBox);
     }
 }

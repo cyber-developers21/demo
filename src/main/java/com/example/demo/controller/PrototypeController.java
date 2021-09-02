@@ -1,41 +1,41 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.enum_type.ColourPalette;
-import com.example.demo.domain.enum_type.DriveType;
-import com.example.demo.domain.enum_type.GearBoxType;
-import com.example.demo.domain.enum_type.ModelType;
 import com.example.demo.domain.model.Prototype;
-import com.example.demo.domain.model.engine.Engine;
-import com.example.demo.domain.model.engine.GearBox;
-import com.example.demo.service.PrototypeService;
+import com.example.demo.service.impl.prototype.PassatPrototypeServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.SwaggerDefinition;
+import io.swagger.annotations.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.UUID;
-
 @RestController
+@RequestMapping("/api/prototype")
+@Api(tags = {"Prototype"})
+@SwaggerDefinition(tags = {
+        @Tag(name = "Prototype", description = "Build prototype")
+})
 public class PrototypeController {
 
-    private final PrototypeService prototypeService;
+    private final PassatPrototypeServiceImpl passatPrototypeService;
 
-    public PrototypeController(PrototypeService prototypeService) {
-        this.prototypeService = prototypeService;
+    public PrototypeController(PassatPrototypeServiceImpl passatPrototypeService) {
+        this.passatPrototypeService = passatPrototypeService;
     }
 
-
-    @GetMapping("build-prototype")
-    public String buildPrototype() {
-        Engine engine = new Engine();
-        engine.setEngineId(UUID.randomUUID());
-        GearBox gearBox = new GearBox();
-        gearBox.setGearBoxType(GearBoxType.AUTOMATIC);
-        gearBox.setNumberOfGears(4);
-        Prototype prototype = prototypeService.buildPrototype(123d, 231d,
-                Arrays.asList(ColourPalette.BLUE, ColourPalette.GREEN), Collections.singletonList(gearBox),
-                Collections.singletonList(engine), Collections.singletonList(DriveType.AUTONOM), Collections.singletonList(ModelType.CROSS_OVER));
-        System.out.println(prototype.getLength());
-        return String.valueOf(prototype.getLength());
+    @ApiOperation(value = "Build and get Prototype")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 201, message = "Created"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 422, message = "Unprocessable entity")
+    })
+    @GetMapping("build-and-get-passat-prototype")
+    public Prototype buildPrototype() {
+        return passatPrototypeService.buildPrototype();
     }
 }

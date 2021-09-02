@@ -1,35 +1,28 @@
 package com.example.demo.domain.model.engine;
 
+import com.example.demo.domain.enum_type.EngineType;
+
 import java.math.BigDecimal;
-import java.util.UUID;
 
 public class Engine {
-    private UUID engineId;
     private Integer tork;
     private Integer horsePower;
     private Integer volume;
+    private EngineType engineType;
     private double totalDuration;
     private BigDecimal price;
 
     public Engine() {
     }
 
-    public Engine(UUID engineId, Integer tork, Integer horsePower, Integer volume, double totalDuration,
-                  BigDecimal price) {
-        this.engineId = engineId;
+    public Engine(Integer tork, Integer horsePower, Integer volume, EngineType engineType,
+                  double totalDuration, BigDecimal price) {
         this.tork = tork;
         this.horsePower = horsePower;
         this.volume = volume;
+        this.engineType = engineType;
         this.totalDuration = totalDuration;
         this.price = price;
-    }
-
-    public UUID getEngineId() {
-        return engineId;
-    }
-
-    public void setEngineId(UUID engineId) {
-        this.engineId = engineId;
     }
 
     public Integer getTork() {
@@ -54,6 +47,14 @@ public class Engine {
 
     public void setVolume(Integer volume) {
         this.volume = volume;
+    }
+
+    public EngineType getEngineType() {
+        return engineType;
+    }
+
+    public void setEngineType(EngineType engineType) {
+        this.engineType = engineType;
     }
 
     public double getTotalDuration() {
