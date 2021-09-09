@@ -1,6 +1,6 @@
-package com.example.demo.controller.config;
+package com.example.demo.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -24,42 +24,100 @@ import java.util.Collections;
 
 import static springfox.documentation.builders.PathSelectors.any;
 
-/**
- * This is for Swagger UI configs
- * http://localhost:8090/swagger-ui.html for see swagger-ui
- *
- * @author yasina
- */
 @Configuration
 @EnableSwagger2
+@ConfigurationProperties(prefix = "swagger")
 public class SwaggerConfig implements WebMvcConfigurer {
 
-    @Value("${swagger.app-info.name}")
     private String name;
 
-    @Value("${swagger.app-info.description}")
     private String description;
 
-    @Value("${swagger.app-info.term-of-service-url}")
     private String termOfServiceUrl;
 
-    @Value("${swagger.app-info.version}")
     private String version;
 
-    @Value("${swagger.app-info.license}")
     private String license;
 
-    @Value("${swagger.app-info.license-url}")
     private String licenseUrl;
 
-    @Value("${swagger.app-info.contact.name}")
     private String contactName;
 
-    @Value("${swagger.app-info.contact.url}")
     private String contactURL;
 
-    @Value("${swagger.app-info.contact.email}")
     private String contactEmail;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTermOfServiceUrl() {
+        return termOfServiceUrl;
+    }
+
+    public void setTermOfServiceUrl(String termOfServiceUrl) {
+        this.termOfServiceUrl = termOfServiceUrl;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
+    }
+
+    public String getLicenseUrl() {
+        return licenseUrl;
+    }
+
+    public void setLicenseUrl(String licenseUrl) {
+        this.licenseUrl = licenseUrl;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactURL() {
+        return contactURL;
+    }
+
+    public void setContactURL(String contactURL) {
+        this.contactURL = contactURL;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
 
     @Bean
     public Docket productApi() {

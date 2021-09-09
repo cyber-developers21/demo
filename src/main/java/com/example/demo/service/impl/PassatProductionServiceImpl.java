@@ -8,57 +8,36 @@ import com.example.demo.domain.model.Vehicle;
 import com.example.demo.domain.model.car.Passat;
 import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
+import com.example.demo.domain.model.sale.Customer;
+import com.example.demo.domain.model.sale.PaymentInfo;
+import com.example.demo.service.CalculationService;
 import com.example.demo.service.ProductionService;
 import com.example.demo.util.PriceConstants;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
+import static com.example.demo.constants.StaticConstants.VEHICLE_MAP;
 import static com.example.demo.util.VehicleSizeConstants.PASSAT_FIX_HEIGHT;
 import static com.example.demo.util.VehicleSizeConstants.PASSAT_FIX_LENGTH;
 import static com.example.demo.util.VehicleSizeConstants.PASSAT_FIX_WIDTH;
 
 @Service
 public class PassatProductionServiceImpl implements ProductionService {
+
+    private final CalculationService calculationService;
+
+    public PassatProductionServiceImpl(CalculationService calculationService) {
+        this.calculationService = calculationService;
+    }
+
     @Override
     public Vehicle releaseNewCar(ColourPalette colourPalette, ModelType modelType, DriveType driveType,
                                  Engine engine, GearBox gearBox) {
 
         Vehicle passat = new Passat(PASSAT_FIX_LENGTH, PASSAT_FIX_WIDTH, PASSAT_FIX_HEIGHT, colourPalette, modelType,
                 driveType, engine, gearBox);
-
-        /**
-         private UUID vehicleId;
-         private double length;
-         private double width;
-         private double height;
-         private ColourPalette colourPalette;
-         private ModelType modelType;
-         private DriveType driveType;
-         private GearBox gearBox;
-
-                 private GearBoxType gearBoxType;
-                 private int numberOfGears;
-
-         private Engine engine;
-
-                 private UUID engineId;
-                 private Integer tork;
-                 private Integer horsePower;
-                 private Integer volume;
-                 private EngineType engineType;
-
-         private OptionList optionList;
-
-                 private Map<Integer, String> colourMap;
-                 private Map<Integer, String> modelMap;
-                 private Map<Integer, String> driveMap;
-                 private Map<Integer, String> gearBoxMap;
-                 private List<Engine> engineList;
-         */
 
         List<Duration> durationList = new ArrayList<>();
         addDuration(durationList, colourPalette.name(), colourPalette.getDuration());
@@ -67,22 +46,25 @@ public class PassatProductionServiceImpl implements ProductionService {
         addDuration(durationList, engine.getClass().getName(), engine.getTotalDuration());
         addDuration(durationList, gearBox.getClass().getName(), gearBox.getTotalDuration());
 
-        double totalDuration = calculateDuration(durationList);
+        double totalDuration = calculationService.calculateDuration(durationList);
         passat.setTotalDuration(totalDuration);
 
         List<BigDecimal> priceList = Arrays.asList(colourPalette.getPrice(), modelType.getPrice(), driveType.getPrice(),
                 engine.getEngineType().getPrice(), gearBox.getGearBoxType().getPrice());
 
         BigDecimal totalPrice = PriceConstants.basePassatPrice
-                .add(calculatePrice(priceList))
+                .add(calculationService.calculatePrice(priceList))
                 .add(BigDecimal.valueOf(totalDuration).multiply(PriceConstants.dailyLaborFee));
 
         passat.setPrice(totalPrice);
+        passat.setVehicleId(UUID.randomUUID());
+        passat.setCarModel("Passat");
+        VEHICLE_MAP.put(passat, 1);
         return passat;
     }
 
-    private boolean addDuration(List<Duration> durationList, String name, double duration) {
-        return durationList.add(new Duration(name, duration));
+    private void addDuration(List<Duration> durationList, String name, double duration) {
+        durationList.add(new Duration(name, duration));
     }
 
     private double calculateDuration(List<Duration> durationList){

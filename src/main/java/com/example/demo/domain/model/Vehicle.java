@@ -7,6 +7,7 @@ import com.example.demo.domain.model.engine.Engine;
 import com.example.demo.domain.model.engine.GearBox;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public abstract class Vehicle {
     private double length;
@@ -20,6 +21,8 @@ public abstract class Vehicle {
     private GearBox gearBox;
     private double totalDuration;
     private BigDecimal price;
+    private UUID vehicleId;
+    private String carModel;
 
     protected Vehicle() {
     }
@@ -122,5 +125,21 @@ public abstract class Vehicle {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public UUID getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(UUID vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
     }
 }
